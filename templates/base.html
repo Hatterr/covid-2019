@@ -25,6 +25,10 @@
 {% block nav %}
     <div style="min-width:700px;margin-bottom: 1vw">
         <ul class="nav nav-tabs">
+		    <li class="nav-item">
+                <a class="nav-link {% if request.endpoint=='index' %}active{% endif %}"
+                   href="{{ url_for('index') }}">上商泰迪python爬虫实战</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link {% if request.endpoint=='index' %}active{% endif %}"
                    href="{{ url_for('index') }}">全国数据</a>
