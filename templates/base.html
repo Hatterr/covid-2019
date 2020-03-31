@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    {% block head %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}{% endblock title %}-Sweeneys</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+        <script src="https://cdn.bootcss.com/popper.js/1.16.1/popper.js"></script>
+        <script src="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+        </body>
+        <script src="https://cdn.bootcss.com/echarts/4.7.0/echarts.js"></script>
+        <script src="{{ url_for('static', filename='js/china.js') }}"></script>
+        {% block css %}{% endblock %}
+    {% endblock %}
+</head>
+<body>
+{% block nav %}
+    <div style="min-width:700px;margin-bottom: 1vw">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link {% if request.endpoint=='index' %}active{% endif %}"
+                   href="{{ url_for('index') }}">全国数据</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.endpoint=='china_map' %}active{% endif %}"
+                   href="{{ url_for('china_map') }}">疫情地图</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.endpoint=='china_trend' %}active{% endif %}"
+                   href="{{ url_for('china_trend') }}">全国趋势</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/Hatterr/covid-2019">
+                    <img style="max-height: 30px;margin-top: -5px" src="{{ url_for('static', filename='images/github-mark.png') }}"
+                         alt="">
+                </a>
+            </li>
+
+        </ul>
+    </div>
+{% endblock %}
+<main class="container">
+    {% block content %}{% endblock content %}
+    {% block footer %}{% endblock footer %}
+</main>
+</body>
+{% block script %}{% endblock %}
+</html>
